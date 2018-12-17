@@ -1,7 +1,7 @@
 {
   "name": "meyer",
   "version": "0.0.0",
-  "description": "",
+  "description": "meyer is a database migration tool with inversion of control.",
   "keywords": [],
   "sideEffects": false,
   "main": "dist/meyer.cjs.js",
