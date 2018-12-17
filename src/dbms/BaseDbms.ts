@@ -16,13 +16,11 @@ export default abstract class BaseDbms implements Dbms {
     )
   }
 
-  abstract beginTransaction(): Promise<void>
-  abstract rollbackTransaction(): Promise<void>
-  abstract commitTransaction(): Promise<void>
   abstract listMigrations(tableName: string): Promise<Migration[]>
   abstract applyMigration(
     tableName: string,
-    migration: Migration
+    migration: Migration,
+    opts: { checkEffects?: boolean }
   ): Promise<void>
   abstract revertMigration(
     tableName: string,

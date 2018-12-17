@@ -160,15 +160,9 @@ export default class Meyer {
       }
 
       this.debug(`applying migration ${migration.id}`)
-      if (this.development) {
-        await this.dbms.beginTransaction()
-        await this.dbms.applyMigration(this.tableName, migration)
-        await this.dbms.revertMigration(this.tableName, migration)
-        await this.dbms.applyMigration(this.tableName, migration)
-        await this.dbms.commitTransaction()
-      } else {
-        await this.dbms.applyMigration(this.tableName, migration)
-      }
+      await this.dbms.applyMigration(this.tableName, migration, {
+        checkEffects: this.development
+      })
     }
   }
 }

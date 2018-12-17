@@ -10,18 +10,6 @@ export default class SqliteDbms extends BaseDbms {
     this._driver = driver
   }
 
-  beginTransaction = async (): Promise<void> => {
-    await this.exec('BEGIN;')
-  }
-
-  rollbackTransaction = async (): Promise<void> => {
-    await this.exec('ROLLBACK;')
-  }
-
-  commitTransaction = async (): Promise<void> => {
-    await this.exec('COMMIT;')
-  }
-
   listMigrations = async (tableName: string): Promise<Migration[]> => {
     await this.exec(`create table if not exists "${tableName}" (
       id integer primary key,
@@ -31,16 +19,22 @@ export default class SqliteDbms extends BaseDbms {
       checksum text not null
     )`)
 
-    return await this.all(
+    return this.all(
       `SELECT id, name, up, down, checksum FROM ${tableName} ORDER BY id ASC`
     )
   }
 
   applyMigration = async (
     tableName: string,
-    migration: Migration
+    migration: Migration,
+    { checkEffects = false }: { checkEffects: boolean }
   ): Promise<void> => {
+    await this.exec('BEGIN;')
     await this.exec(migration.up)
+    if (checkEffects) {
+      await this.exec(migration.down)
+      await this.exec(migration.up)
+    }
     await this.run(
       `INSERT INTO "${tableName}" (id, name, up, down, checksum) VALUES (?, ?, ?, ?, ?)`,
       [
@@ -51,14 +45,17 @@ export default class SqliteDbms extends BaseDbms {
         migration.checksum
       ]
     )
+    await this.exec('COMMIT;')
   }
 
   revertMigration = async (
     tableName: string,
     migration: Migration
   ): Promise<void> => {
+    await this.exec('BEGIN;')
     await this.exec(migration.down)
     await this.run(`DELETE FROM "${tableName}" WHERE id = ?`, [migration.id])
+    await this.exec('COMMIT;')
   }
 
   run = (sql: string, params?: any[]): Promise<SqliteDbms> => {
