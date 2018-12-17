@@ -4,7 +4,7 @@
   "description": "",
   "keywords": [],
   "sideEffects": false,
-  "main": "dist/meyer.umd.js",
+  "main": "dist/meyer.cjs.js",
   "module": "dist/meyer.es5.js",
   "typings": "dist/types/meyer.d.ts",
   "files": [
