@@ -16,8 +16,8 @@ type Options = {
 }
 
 const REGEX_ORDERED_SQL_FILE = /^(\d+).(.*?)\.sql$/
-const REGEX_MIGRATION_UP = /--[ ]*up:begin(.*)--[ ]*up:end/ims
-const REGEX_MIGRATION_DOWN = /--[ ]*down:begin(.*)--[ ]*down:end/ims
+const REGEX_MIGRATION_UP = /-- *up:begin(.*)-- *up:end/ims
+const REGEX_MIGRATION_DOWN = /-- *down:begin(.*)-- *down:end/ims
 
 export default class Meyer {
   private tableName: string
@@ -98,7 +98,7 @@ export default class Meyer {
       return { id: migration.id, name: migration.name, up, down }
     })
 
-    return await Promise.all(
+    return Promise.all(
       parsedMigrations.map(async migration => {
         const checksum = await this.dbms.computeChecksum(migration)
         return { ...migration, checksum }
