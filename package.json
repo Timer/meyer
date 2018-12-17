@@ -25,7 +25,6 @@
     "build": "tsc --module commonjs && rollup -c rollup.config.ts",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest --coverage",
-    "test:watch": "jest --coverage --watch",
     "test:release": "npm run lint && npm run test -- --no-cache",
     "semantic-release": "semantic-release",
     "commit": "git-cz"
