@@ -10,9 +10,8 @@
     "declaration": true,
     "esModuleInterop": true,
     "declarationDir": "dist/types",
-    "noEmit": false,
-    "emitBOM": false,
-    "outDir": "dist/lib"
+    "noEmit": true,
+    "emitBOM": false
   },
   "include": ["src"]
 }

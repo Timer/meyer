@@ -19,6 +19,9 @@ const REGEX_ORDERED_SQL_FILE = /^(\d+).(.*?)\.sql$/
 const REGEX_MIGRATION_UP = /-- *up:begin(.*)-- *up:end/ims
 const REGEX_MIGRATION_DOWN = /-- *down:begin(.*)-- *down:end/ims
 
+export { Dbms, Migration }
+export { default as BaseDbms } from './dbms/BaseDbms'
+
 export default class Meyer {
   private tableName: string
   private migrationsPath: string
