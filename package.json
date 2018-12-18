@@ -6,7 +6,7 @@
   "sideEffects": false,
   "main": "dist/meyer.cjs.js",
   "module": "dist/meyer.es5.js",
-  "typings": "dist/types/meyer.d.ts",
+  "typings": "dist/types/index.d.ts",
   "files": [
     "dist"
   ],
