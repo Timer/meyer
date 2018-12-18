@@ -1,6 +1,6 @@
 import path from 'path'
 import SqliteDbms from './SqliteDbms'
-import Meyer from '../src/meyer'
+import Meyer from '../src'
 import sqlite3 from 'sqlite3'
 
 const noop = () => {}
