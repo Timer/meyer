@@ -1,6 +1,6 @@
-import { Dbms, Migration } from '../types'
-import eol from 'eol'
-import crypto from 'crypto'
+import { Dbms, Migration } from '../types';
+import eol from 'eol';
+import crypto from 'crypto';
 
 export default abstract class BaseDbms implements Dbms {
   computeChecksum(migration: Migration): Promise<string> {
@@ -13,17 +13,17 @@ export default abstract class BaseDbms implements Dbms {
           )
         )
         .digest('hex')
-    )
+    );
   }
 
-  abstract listMigrations(tableName: string): Promise<Migration[]>
+  abstract listMigrations(tableName: string): Promise<Migration[]>;
   abstract applyMigration(
     tableName: string,
     migration: Migration,
     opts: { checkEffects?: boolean }
-  ): Promise<void>
+  ): Promise<void>;
   abstract revertMigration(
     tableName: string,
     migration: Migration
-  ): Promise<void>
+  ): Promise<void>;
 }

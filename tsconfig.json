@@ -1,17 +1,22 @@
 {
+  "include": ["src", "types"],
   "compilerOptions": {
-    "moduleResolution": "node",
-    "target": "es2015",
-    "module": "es2015",
-    "lib": ["es2015"],
-    "strict": true,
-    "strictNullChecks": true,
-    "sourceMap": true,
+    "module": "esnext",
+    "lib": ["dom", "esnext"],
+    "importHelpers": true,
     "declaration": true,
-    "esModuleInterop": true,
-    "declarationDir": "dist/types",
-    "noEmit": true,
-    "emitBOM": false
-  },
-  "include": ["src"]
+    "sourceMap": true,
+    "rootDir": "./src",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "*": ["src/*", "node_modules/*"]
+    },
+    "esModuleInterop": true
+  }
 }
