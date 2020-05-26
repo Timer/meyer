@@ -6,8 +6,6 @@ export type Migration = {
   checksum: string;
 };
 
-type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
-
 export interface Dbms {
   listMigrations(tableName: string): Promise<Migration[]>;
   applyMigration(
@@ -17,4 +15,5 @@ export interface Dbms {
   ): Promise<void>;
   revertMigration(tableName: string, migration: Migration): Promise<void>;
   computeChecksum(migration: Omit<Migration, 'checksum'>): Promise<string>;
+  close(): Promise<void>;
 }

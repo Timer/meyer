@@ -2,7 +2,6 @@ import Debug from 'debug';
 import fs from 'fs';
 import path from 'path';
 import { promisify } from 'util';
-
 import { Dbms, Migration } from './types';
 import { checkSeries } from './util/series';
 
@@ -19,8 +18,8 @@ const REGEX_ORDERED_SQL_FILE = /^(\d+).(.*?)\.sql$/;
 const REGEX_MIGRATION_UP = /-- *up:begin(.*)-- *up:end/ims;
 const REGEX_MIGRATION_DOWN = /-- *down:begin(.*)-- *down:end/ims;
 
-export { Dbms, Migration };
 export { default as BaseDbms } from './dbms/BaseDbms';
+export { Dbms, Migration };
 
 export default class Meyer {
   private tableName: string;
@@ -168,5 +167,7 @@ export default class Meyer {
         checkEffects: this.development,
       });
     }
+
+    await this.dbms.close();
   };
 }
