@@ -167,7 +167,5 @@ export default class Meyer {
         checkEffects: this.development,
       });
     }
-
-    await this.dbms.close();
   };
 }
