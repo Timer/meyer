@@ -26,4 +26,8 @@ export default abstract class BaseDbms implements Dbms {
     tableName: string,
     migration: Migration
   ): Promise<void>;
+
+  close(): Promise<void> {
+    return Promise.resolve();
+  }
 }
