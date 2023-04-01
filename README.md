@@ -2,7 +2,7 @@
 
 **meyer** is a database migration tool with inversion of control (via pluggable DBMS).
 
-Meyer supports chronologicially named plain SQL files which apply migrations one after another. An UP and DOWN section is specified in each file which should provide all the necessary instructions on how to both apply and remove a migration. While your project is in development, Meyer will freely apply statements in the DOWN if prior migrations are modified.
+Meyer supports sequentially named plain SQL files which apply migrations one after another. An UP and DOWN section is specified in each file which should provide all the necessary instructions on how to both apply and remove a migration. While your project is in development, Meyer will freely apply statements in the DOWN if prior migrations are modified.
 
 ## Installation
 
