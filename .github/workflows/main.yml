@@ -8,36 +8,31 @@ jobs:
       - name: Begin CI...
         uses: actions/checkout@v2
 
-      - name: Use Node 12
+      - name: Use Node 18
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 18.x
 
       - name: Use cached node_modules
         uses: actions/cache@v1
         with:
           path: node_modules
-          key: nodeModules-${{ hashFiles('**/yarn.lock') }}
+          key: nodeModules-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             nodeModules-
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
-        env:
-          CI: true
-
-      - name: Lint
-        run: yarn lint
+        run: pnpm install --frozen-lockfile
         env:
           CI: true
 
       - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+        run: pnpm test -- --coverage
         env:
           CI: true
 
       - name: Build
-        run: yarn build
+        run: pnpm build
         env:
           CI: true
 
@@ -46,4 +41,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: pnpm dlx semantic-release
