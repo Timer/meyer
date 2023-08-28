@@ -2,8 +2,9 @@
   "include": ["src", "types"],
   "compilerOptions": {
     "module": "esnext",
+    "target": "ES2020",
     "lib": ["dom", "esnext"],
-    "importHelpers": true,
+    "importHelpers": false,
     "declaration": true,
     "sourceMap": true,
     "rootDir": "./src",
