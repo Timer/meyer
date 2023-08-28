@@ -1,63 +1,63 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Meyer can update the example table 1`] = `
-Array [
-  Object {
+exports[`Meyer > can update the example table 1`] = `
+[
+  {
     "id": 1,
     "payload": "foo",
   },
-  Object {
+  {
     "id": 2,
     "payload": "bar",
   },
-  Object {
+  {
     "id": 3,
     "payload": "baz",
   },
 ]
 `;
 
-exports[`Meyer creates an example table (dev) 1`] = `
-Array [
-  Object {
+exports[`Meyer > creates an example table (dev) 1`] = `
+[
+  {
     "id": 1,
     "payload": "foo",
   },
-  Object {
+  {
     "id": 2,
     "payload": "bar",
   },
 ]
 `;
 
-exports[`Meyer creates an example table (prod) 1`] = `
-Array [
-  Object {
+exports[`Meyer > creates an example table (prod) 1`] = `
+[
+  {
     "id": 1,
     "payload": "foo",
   },
-  Object {
+  {
     "id": 2,
     "payload": "bar",
   },
 ]
 `;
 
-exports[`Meyer throws an error when changing non-development 1`] = `
-Array [
-  Object {
+exports[`Meyer > throws an error when changing non-development 1`] = `
+[
+  {
     "id": 1,
     "payload": "foo",
   },
-  Object {
+  {
     "id": 2,
     "payload": "bar",
   },
 ]
 `;
 
-exports[`Meyer throws an error when changing non-development 2`] = `[Error: ... migration 1 has a hash mismatch, aborting ...]`;
+exports[`Meyer > throws an error when changing non-development 2`] = `[Error: ... migration 1 has a hash mismatch, aborting ...]`;
 
-exports[`Meyer throws an error when down is missing 1`] = `[Error: no down in migration 1 (example)]`;
+exports[`Meyer > throws an error when down is missing 1`] = `[Error: no down in migration 1 (example)]`;
 
-exports[`Meyer throws an error when up is missing 1`] = `[Error: no up in migration 1 (example)]`;
+exports[`Meyer > throws an error when up is missing 1`] = `[Error: no up in migration 1 (example)]`;

@@ -1,7 +1,8 @@
 import path from 'path';
-import SqliteDbms from './SqliteDbms';
-import Meyer from '../src';
 import sqlite3 from 'sqlite3';
+import { afterAll, beforeAll, describe, expect, test } from 'vitest';
+import Meyer from '../src';
+import SqliteDbms from './SqliteDbms';
 
 const noop = () => {};
 
