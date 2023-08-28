@@ -5,6 +5,12 @@
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
